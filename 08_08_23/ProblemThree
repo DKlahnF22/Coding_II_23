@@ -1,0 +1,34 @@
+Objects:
+-Destination
+-The box
+-The snakes
+
+Destination Properties:
+-Recieving department
+-Sending department
+-Time sent
+
+Destination behaviors:
+-select destination
+-input current department
+-input time
+
+Box properties:
+-box type
+-box size
+-box weight
+
+Box behaviors:
+-identify box type
+-measure box
+-weigh box
+
+Snake properties:
+-snake type
+-snake weight
+-snake danger level
+
+Snake behaviors:
+-identify snake
+-weigh snake
+-identify snake danger level
