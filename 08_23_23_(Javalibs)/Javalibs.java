@@ -25,9 +25,9 @@
         System.out.println("lastly the third.");
         String adjective3 = sc.nextLine();
         System.out.println("Fantastic. Now it is required of me to do some basic math, please give me an integer.");
-        int Integer = sc.nextInt();
+        String Number1 = sc.nextLine();
         System.out.println("Now give me a double.");
-        double Double = sc.nextDouble();
+        String Number2 = sc.nextLine();
         System.out.println("Well done. I shall now begin putting your selected words into the Javalibs.");
 
 
@@ -41,7 +41,7 @@
         System.out.println("and a wheelchair has wheels " +verb2 +" to an axis under the " +noun2 +".");
 
         System.out.println("I also simply added together the integer and double you gave me, the sum is:");
-        System.out.println(((double)Integer + Double));
-
+        System.out.println(((double)Integer.parseInt(Number1) + Double.parseDouble(Number2)));
+// I love you so so much more
     }
 }
