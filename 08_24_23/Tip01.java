@@ -13,16 +13,7 @@ public class Tip01 {
         Person 8: $30
         */
 
-        public double personOne = 10;               
-        public double personTwo = 12;
-        public double personThree = 9;
-        public double personFour = 8;
-        public double personFive = 7;
-        public double personSix = 15;
-        public double personSeven = 11;
-        public double personEight = 30;
 
-
-        System.out.println("Person 1:"+personOne +"$");
+        System.out.println("Person 1:" +"$");
     }    
 }

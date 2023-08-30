@@ -5,6 +5,5 @@ public class Calculator3 {
     public void findTotal(double price, String name){
         double total = price*(1+tax+tip);
         System.out.println(name +"'s total was " +total +"$");
-
     }
 }
