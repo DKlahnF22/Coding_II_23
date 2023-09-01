@@ -3,7 +3,7 @@ import java.util.Random;
 
 public class ComputeMethods {
    public double fToC(double degreesF){
-    double degreesC = ((5 / 9) * (degreesF - 32));
+    double degreesC = ((5.0 / 9.0) * (degreesF - 32.0));
     System.out.println("When converted: " + degreesC);
     return degreesC;
    }
