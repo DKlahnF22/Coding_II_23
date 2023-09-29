@@ -22,7 +22,7 @@ public class TestingStuff {
     int charAmount = 0;
     for(int i = 0; i < stringLength; i++){
       char charComp = Testing.charAt(i);
-      if (Character.equals('a')){
+      if (Character.equals()){
           charAmount += 1;
       } else{
           charAmount += 0;
