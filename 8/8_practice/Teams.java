@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 public class Teams {
-    static ArrayList<Teams> teams = new ArrayList<Teams>(); 
+    public static ArrayList<Teams> teams = new ArrayList<Teams>(); 
     //fields
     private String teamName;
     private int winTotal;
@@ -50,6 +50,6 @@ public class Teams {
         totalGoals =+ newGoal;
     }
     public void setGoalAllowed(int goalAllowed){
-        totalGoalsAllowed = goalAllowed;
+        totalGoalsAllowed =+ goalAllowed;
     }
 }

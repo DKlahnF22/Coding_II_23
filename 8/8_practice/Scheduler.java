@@ -15,12 +15,15 @@ public class Scheduler {
             System.out.println("Please input the estimated temperature of the week in fahrenheit, in number form. Decimal included.");
             try{
                 double temperature = sc.nextDouble();
-                if(temperature > 32.0){
-                    Games firstSeason = new Games();
+                if(temperature >= 32.0){
+                    Games firstSeason = new Games(temperature);
+                    winterCheck = 0;
+                    System.out.println(winterCheck);
                     System.out.println("It is warm enough to play.");
                 } else {
                     System.out.println("Too cold to play.");
-                    winterCheck =+ 1;
+                    winterCheck += 1;
+                    System.out.println(winterCheck);
                 }
             }
             catch(InputMismatchException e){
@@ -28,6 +31,13 @@ public class Scheduler {
                 sc.next();
             }
         }
+        for(int i = 0; i < 4; i++){
+            System.out.println(Teams.teams.get(i).getName());
+            System.out.println("Wins: " + (Teams.teams.get(i).getwinTotal()) + ", Losses: " + (Teams.teams.get(i).getLossTotal()) + ", Ties: " + (Teams.teams.get(i).getTieTotal()));
+            System.out.println("Points Scored: " + (Teams.teams.get(i).getGoalTotal()) + ", Points Allowed: " + (Teams.teams.get(i).getGoalAllowed()));
+            System.out.println("");
+        }
+
         sc.close();
     }
 }

@@ -3,25 +3,94 @@ import java.util.Random;
 public class Games {
     //fields
     Random Random = new Random();
-   private String teamName1;
-   private String teamName2;
+   private String homeTeam;
+   private String awayTeam;
    private int teamScore1;
    private int teamScore2;
    private double temperature;
     private int gameNum = 0;
     //constructor
-    public Games(){
+    public Games(double temperature){
         setGameNum(1);
-        int i = Random.nextInt(3);
-        //have an if statement checking if the team index is the same
-
+        this.temperature = temperature;
+        //gets two different numbers 0 - 3 to choose teams, makes sure the numbers aren't the same
+        int teamOne = Random.nextInt(3);
+        int teamOneScore = 0;
+        int teamTwo = Random.nextInt(3);
+        int teamTwoScore = 0;
+        while (teamOne == teamTwo){
+        teamTwo = Random.nextInt(3);
+        }
+        //this section assigns the selected teams to the game's variables and begins updating the teams
+        this.homeTeam = Teams.teams.get(teamOne).getName();
+        this.awayTeam = Teams.teams.get(teamTwo).getName();
+        if(temperature > 90){
+            Teams.teams.get(teamOne).setGoalTotal(teamOneScore = Random.nextInt(10));
+            Teams.teams.get(teamTwo).setGoalTotal(teamTwoScore = Random.nextInt(10));
+        } else if (temperature > 80){
+            Teams.teams.get(teamOne).setGoalTotal(teamOneScore = Random.nextInt(8));
+            Teams.teams.get(teamTwo).setGoalTotal(teamTwoScore = Random.nextInt(8));
+        } else if (temperature > 70){
+            Teams.teams.get(teamOne).setGoalTotal(teamOneScore = Random.nextInt(6));
+            Teams.teams.get(teamTwo).setGoalTotal(teamTwoScore = Random.nextInt(6));
+        } else {
+            Teams.teams.get(teamOne).setGoalTotal(teamOneScore = Random.nextInt(4));
+            Teams.teams.get(teamTwo).setGoalTotal(teamTwoScore = Random.nextInt(4));
+        }
+        Teams.teams.get(teamOne).setGoalAllowed(teamTwo);
+        Teams.teams.get(teamTwo).setGoalAllowed(teamOne);
+        if(teamOneScore > teamTwoScore){
+            Teams.teams.get(teamOne).setWinTotal(1);
+            Teams.teams.get(teamTwo).setLossTotal(1);
+        } else if (teamOneScore == teamTwoScore){
+            Teams.teams.get(teamOne).setTieTotal(1);
+            Teams.teams.get(teamTwo).setTieTotal(1);
+        } else {
+            Teams.teams.get(teamTwo).setWinTotal(1);
+            Teams.teams.get(teamOne).setLossTotal(1);
+        }
+        //this section does it for the other half of the game
+        teamOne = Random.nextInt(3);
+        teamTwo = Random.nextInt(3);
+        teamOneScore = 0;
+        teamTwoScore = 0;
+        while(teamOne == teamTwo){
+            teamTwo = Random.nextInt(3);
+        }
+        this.homeTeam += ", " + Teams.teams.get(teamOne).getName();
+        this.homeTeam += ", " + Teams.teams.get(teamTwo).getName();
+        if(temperature > 90){
+            Teams.teams.get(teamOne).setGoalTotal(teamOneScore = Random.nextInt(10));
+            Teams.teams.get(teamTwo).setGoalTotal(teamTwoScore = Random.nextInt(10));
+        } else if (temperature > 80){
+            Teams.teams.get(teamOne).setGoalTotal(teamOneScore = Random.nextInt(8));
+            Teams.teams.get(teamTwo).setGoalTotal(teamTwoScore = Random.nextInt(8));
+        } else if (temperature > 70){
+            Teams.teams.get(teamOne).setGoalTotal(teamOneScore = Random.nextInt(6));
+            Teams.teams.get(teamTwo).setGoalTotal(teamTwoScore = Random.nextInt(6));
+        } else {
+            Teams.teams.get(teamOne).setGoalTotal(teamOneScore = Random.nextInt(4));
+            Teams.teams.get(teamTwo).setGoalTotal(teamTwoScore = Random.nextInt(4));
+        }
+        Teams.teams.get(teamOne).setGoalAllowed(teamTwo);
+        Teams.teams.get(teamTwo).setGoalAllowed(teamOne);
+        if(teamOneScore > teamTwoScore){
+            Teams.teams.get(teamOne).setWinTotal(1);
+            Teams.teams.get(teamTwo).setLossTotal(1);
+        } else if (teamOneScore == teamTwoScore){
+            Teams.teams.get(teamOne).setTieTotal(1);
+            Teams.teams.get(teamTwo).setTieTotal(1);
+        } else {
+            Teams.teams.get(teamTwo).setWinTotal(1);
+            Teams.teams.get(teamOne).setLossTotal(1);
+        }
     }
     //getters
-    public String getTeamName1() {
-        return teamName1;
+    public String getHomeTeam() {
+        return homeTeam;
     }
-    public String getTeamName2() {
-        return teamName2;
+    public String getAwayTeam() {
+        return awayTeam;
     }
     public int getTeamScore1() {
         return teamScore1;
@@ -36,11 +105,11 @@ public class Games {
         return gameNum;
     }
     //setters
-    public void setTeamName1(String teamName1) {
-    this.teamName1 = teamName1;
+    public void setHomeTeam(String teamName1) {
+    this.homeTeam = teamName1;
     }
-    public void setTeamName2(String teamName2) {
-    this.teamName2 = teamName2;
+    public void setAwayTeam(String teamName2) {
+    this.awayTeam = teamName2;
     }
     public void setTeamScore1(int teamScore1) {
     this.teamScore1 = teamScore1;
