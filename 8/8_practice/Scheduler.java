@@ -5,6 +5,7 @@ public class Scheduler {
     public void startSeason(){
         Scanner sc = new Scanner(System.in);
         int winterCheck = 0;
+        int gameTotal = 0;
         //creating teams
         Teams team1 = new Teams("The Googlers", 0, 0, 0, 0, 0);
         Teams team2 = new Teams("The duster busters", 0, 0, 0, 0, 0);
@@ -17,6 +18,7 @@ public class Scheduler {
                 double temperature = sc.nextDouble();
                 if(temperature >= 32.0){
                     Games firstSeason = new Games(temperature);
+                    gameTotal += 1;
                     winterCheck = 0;
                     System.out.println(winterCheck);
                     System.out.println("It is warm enough to play.");
@@ -37,7 +39,9 @@ public class Scheduler {
             System.out.println("Points Scored: " + (Teams.teams.get(i).getGoalTotal()) + ", Points Allowed: " + (Teams.teams.get(i).getGoalAllowed()));
             System.out.println("");
         }
+        for(int i = 0; i < gameTotal; i++){
 
+        }
         sc.close();
     }
 }

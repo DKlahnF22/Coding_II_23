@@ -1,6 +1,8 @@
 
+import java.util.ArrayList;
 import java.util.Random;
 public class Games {
+    public static ArrayList<Games> games = new ArrayList<Games>();
     //fields
     Random Random = new Random();
    private String homeTeam;
@@ -11,12 +13,12 @@ public class Games {
     private int gameNum = 0;
     //constructor
     public Games(double temperature){
-        setGameNum(1);
+        
         this.temperature = temperature;
         //gets two different numbers 0 - 3 to choose teams, makes sure the numbers aren't the same
-        int teamOne = Random.nextInt(3);
+        int teamOne = Random.nextInt(4);
         int teamOneScore = 0;
-        int teamTwo = Random.nextInt(3);
+        int teamTwo = Random.nextInt(4);
         int teamTwoScore = 0;
         while (teamOne == teamTwo){
         teamTwo = Random.nextInt(3);
@@ -24,6 +26,7 @@ public class Games {
         //this section assigns the selected teams to the game's variables and begins updating the teams
         this.homeTeam = Teams.teams.get(teamOne).getName();
         this.awayTeam = Teams.teams.get(teamTwo).getName();
+        //sets the score
         if(temperature > 90){
             Teams.teams.get(teamOne).setGoalTotal(teamOneScore = Random.nextInt(10));
             Teams.teams.get(teamTwo).setGoalTotal(teamTwoScore = Random.nextInt(10));
@@ -37,8 +40,14 @@ public class Games {
             Teams.teams.get(teamOne).setGoalTotal(teamOneScore = Random.nextInt(4));
             Teams.teams.get(teamTwo).setGoalTotal(teamTwoScore = Random.nextInt(4));
         }
-        Teams.teams.get(teamOne).setGoalAllowed(teamTwo);
-        Teams.teams.get(teamTwo).setGoalAllowed(teamOne);
+        //System.out.println("Team one goal total: " + Teams.teams.get(teamOne).getGoalTotal());
+        //System.out.println("Team two goal total: " + Teams.teams.get(teamTwo).getGoalTotal());
+        //settings the goals allowed for each side
+        Teams.teams.get(teamOne).setGoalAllowed(teamTwoScore);
+        Teams.teams.get(teamTwo).setGoalAllowed(teamOneScore);
+        //System.out.println("Team one allowed goals: " + Teams.teams.get(teamOne).getGoalAllowed());
+        //System.out.println("Team two allowed goals: " + Teams.teams.get(teamTwo).getGoalAllowed());
+        //decides who actually won the game
         if(teamOneScore > teamTwoScore){
             Teams.teams.get(teamOne).setWinTotal(1);
             Teams.teams.get(teamTwo).setLossTotal(1);
@@ -49,16 +58,20 @@ public class Games {
             Teams.teams.get(teamTwo).setWinTotal(1);
             Teams.teams.get(teamOne).setLossTotal(1);
         }
+        //System.out.println("Team one win total: " + Teams.teams.get(teamOne).getwinTotal());
+        //System.out.println("Team two win total: " + Teams.teams.get(teamTwo).getwinTotal());
         //this section does it for the other half of the game
-        teamOne = Random.nextInt(3);
-        teamTwo = Random.nextInt(3);
+        teamOne = Random.nextInt(4);
+        teamTwo = Random.nextInt(4);
         teamOneScore = 0;
         teamTwoScore = 0;
+        //makes sure the same teams don't go against eachother
         while(teamOne == teamTwo){
             teamTwo = Random.nextInt(3);
         }
         this.homeTeam += ", " + Teams.teams.get(teamOne).getName();
         this.homeTeam += ", " + Teams.teams.get(teamTwo).getName();
+        //sets the scores for the other teams
         if(temperature > 90){
             Teams.teams.get(teamOne).setGoalTotal(teamOneScore = Random.nextInt(10));
             Teams.teams.get(teamTwo).setGoalTotal(teamTwoScore = Random.nextInt(10));
@@ -72,8 +85,10 @@ public class Games {
             Teams.teams.get(teamOne).setGoalTotal(teamOneScore = Random.nextInt(4));
             Teams.teams.get(teamTwo).setGoalTotal(teamTwoScore = Random.nextInt(4));
         }
-        Teams.teams.get(teamOne).setGoalAllowed(teamTwo);
-        Teams.teams.get(teamTwo).setGoalAllowed(teamOne);
+        //sets the allowed goals for each time
+        Teams.teams.get(teamOne).setGoalAllowed(teamTwoScore);
+        Teams.teams.get(teamTwo).setGoalAllowed(teamOneScore);
+        //decides who wins the game
         if(teamOneScore > teamTwoScore){
             Teams.teams.get(teamOne).setWinTotal(1);
             Teams.teams.get(teamTwo).setLossTotal(1);
@@ -84,6 +99,8 @@ public class Games {
             Teams.teams.get(teamTwo).setWinTotal(1);
             Teams.teams.get(teamOne).setLossTotal(1);
         }
+        games.add(this);
+        System.out.println("Game number: " + gameNum);
     }
     //getters
     public String getHomeTeam() {

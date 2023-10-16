@@ -38,18 +38,18 @@ public class Teams {
     }
     //setters
     public void setWinTotal(int newWin){
-        winTotal =+ newWin;
+        winTotal += newWin;
     }
     public void setLossTotal(int newLoss){
-        lossTotal =+ newLoss;
+        lossTotal += newLoss;
     }
     public void setTieTotal(int newTie){
-        tieTotal =+ newTie;
+        tieTotal += newTie;
     }
     public void setGoalTotal(int newGoal){
-        totalGoals =+ newGoal;
+        totalGoals += newGoal;
     }
     public void setGoalAllowed(int goalAllowed){
-        totalGoalsAllowed =+ goalAllowed;
+        totalGoalsAllowed += goalAllowed;
     }
 }
